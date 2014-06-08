@@ -63,13 +63,12 @@ class UserRepository {
 				profession_id, create_date, voucher) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)"))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		}
-
+		$birthday = date('Y-m-d', strtotime($user->birthday));
 		$today = date('Y-m-d H:i:s');
-
 		/* Sentencia preparada, etapa 2: vinculación*/
 		if (!$stmt->bind_param("sssssssssiisi", $user->name, $user->surname, $user->email, 
-			$today, $user->address, $user->city, $user->country, $user->phone, $user->mobile, 
-			$user->mobileCompany, $user->profession, $today, $user->voucher)) {
+			$birthday, $user->address, $user->city, $user->country, $user->phone, 
+			$user->mobile, $user->mobileCompany, $user->profession, $today, $user->voucher)) {
 			echo "Falló la vinculación de parámetros: (" . $stmt->errno . ") " . $stmt->error;
 		}
 
