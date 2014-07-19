@@ -31,21 +31,20 @@ class CreateUserAction implements Action {
 
 	public function execute() {
 		$email = $_POST["email"];
-		// $user = $this->userRepository->findUserByEmail($email);
-
-		// if ($user){
-		// 	return $user->voucher;
-		// }
-
-		$voucher = rand(00000, 99999);
-
-		$user = new User($_POST["name"], $_POST["surname"],
+		$voucher = $this->userRepository->findByEmail($email);
+		//create a new user
+		if (is_null($voucher)){
+			$voucher = rand(00000, 99999);
+			$user = new User($_POST["name"], $_POST["surname"],
 			$email, $_POST["birthday"], $_POST["address"],
 			$_POST["city"], $_POST["country"], $_POST["phone"],
 			$_POST["mobile"], $_POST["mobileCompany"],
 			$_POST["profession"], $_POST["createDate"],
-			$voucher);
-		$this->userRepository->create($user);
+			$voucher, $_POST["sons"]);
+			$this->userRepository->create($user);
+			$mailer = new Mailer();
+			$mailer->send($user);
+		}
 		return $voucher;
 	}
 };

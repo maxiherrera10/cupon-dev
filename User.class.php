@@ -15,11 +15,12 @@ class User {
 	public $profession;
 	public $createDate;
 	public $voucher;
+	public $sons;
 
 	public function __construct($name, $surname, $email,
 		$birthday, $address, $city, $country, $phone,
 		$mobile, $mobileCompany, $profession, 
-		$createDate, $voucher) {
+		$createDate, $voucher, $sons) {
 		$this->name = $name;
 		$this->surname = $surname;
 		$this->email = $email;
@@ -33,6 +34,7 @@ class User {
 		$this->profession = $profession;
 		$this->createDate = $createDate;
 		$this->voucher = $voucher;
+		$this->sons = $sons;
 	}
 
 }

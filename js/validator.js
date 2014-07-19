@@ -51,29 +51,28 @@ $(document).ready(function() {
             },
             birthday: {
                 validators: {
+                    notEmpty: {
+                        message: 'El Cumpleanio es requerido'
+                    },
                     date: {
                         format: 'DD/MM/YYYY',
-                        message: 'The value is not a valid date'
+                        message: 'La fecha debe ser valida'
                     },
                     callback: {
-                        message: 'Wrong answer',
+                        message: 'Debe ser mayor a 18 años',
                         callback: function(value, validator) {
-                            // var m = new moment(value, 'MMMM D', true);
-                            // // Check if the input value follows the MMMM D format
-                            // if (!m.isValid()) {
-                            //     return false;
-                            // }
-                            // // US independence day is July 4
-                            // return (m.months() == 6 && m.date() == 4);
-
-                            // var date = new Date(value);
-                            // console.log(date);
-                            // console.log("value");
-                            // console.log(value);
-                            // console.log("validator");
-                            // console.log(validator);
-
-                            return true;
+                            var m = new moment(value, 'DD/MM/YYYY', true);
+                            if (!m.isValid()) {
+                                return false;
+                            }
+                            // Check if the date in our range
+                            var strings = [];
+                            if (m != null) {
+                                strings = m.fromNow().split(" ",1);
+                            }
+                            
+                            var age = parseInt(strings[0]);
+                            return age > 17;
                         }
                     }
                 }
@@ -119,9 +118,13 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'El Telefono es requerido'
                     },
-                    phone: {
-                        country: 'AR',
-                        message: 'El Telefono debe ser de Argentina'
+                    stringLength: {
+                        min: 1,
+                        max: 30,
+                        message: 'El telefono debe ser menor a 30 caracteres'
+                    },
+                    integer: {
+                        message: 'Debe ser un numero'
                     }
                 }
             },
@@ -130,9 +133,13 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'El Celular es requerido'
                     },
-                    phone: {
-                        country: 'AR',
-                        message: 'El Celular debe ser de Argentina'
+                    stringLength: {
+                        min: 1,
+                        max: 30,
+                        message: 'El Celular debe ser menor a 30 caracteres'
+                    },
+                    integer: {
+                        message: 'Debe ser un numero'
                     }
                 }
             }

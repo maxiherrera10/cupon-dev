@@ -1,33 +1,3 @@
-// //Define an angular module for our app
-// var cuponapp = angular.module('cuponapp', ['ngRoute']);
-
-// cuponapp.config(['$routeProvider', '$locationProvider',
-// 	function($routeProvider, $locationProvider) {
-// 		$routeProvider.when('/voucher/:voucherId', {
-// 			templateUrl: '/partials/voucher.html',
-// 			controller: 'voucherController',
-// 			controllerAs: 'voucher'
-// 		});
-// 		// configure html5 to get links working on jsfiddle
-// 		$locationProvider.html5Mode(true);
-// 	}
-// ]);
-
-// cuponapp.controller('MainCtrl', ['$route', '$routeParams', '$location',
-// 	function($route, $routeParams, $location) {
-// 		this.$route = $route;
-// 		this.$location = $location;
-// 		this.$routeParams = $routeParams;
-// 	}
-// ]);
-
-// cuponapp.controller('voucherController', ['$routeParams', 
-// 	function($routeParams) {
-// 		this.name = "voucherController";
-// 		this.params = $routeParams;
-// 	}
-// ]);
-
 // define angular module/app
 var cuponapp = angular.module('cuponapp', []);
 
@@ -46,7 +16,7 @@ function formController($scope, $http) {
 			$scope.user.profession = $scope.user.profession.id;
 			$http({
 				method  : 'POST',
-				url     : 'index.php/users',
+				url     : 'app.php/users',
 				data    : $.param($scope.user),  // pass in data as strings
 				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 			}).
@@ -68,7 +38,7 @@ function professionController($scope, $http) {
 	$scope.professions = [];
 	$http({
 		method  : 'GET',
-		url     : 'index.php/professions'
+		url     : 'app.php/professions'
 	}).
 	success(function(data, status, headers, config) {
 		$scope.professions = $.map(
@@ -94,7 +64,7 @@ function mobileCompaniesController($scope, $http) {
 	$scope.mobileCompanies = [];
 	$http({
 		method  : 'GET',
-		url     : 'index.php/mobileCompanies'
+		url     : 'app.php/mobileCompanies'
 	}).
 	success(function(data, status, headers, config) {
 		$scope.mobileCompanies = $.map(

@@ -1,0 +1,33 @@
+body {
+	background: url('http://localhost/img/bk.jpg');
+}
+
+#maindiv {
+	background: url('http://localhost/img/fondoCupon.png');
+	background-repeat:no-repeat;
+}
+
+label {
+	color: #ffffff;
+}
+
+.form-control {
+	height: 30px;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+input.transparent-input{
+	background-color:transparent !important;
+	border:none !important;
+}
+
+select.transparent-input{
+	background-color:transparent !important;
+	border:none !important;
+}
+
+.form-horizontal {
+	padding-left:20%;
+	padding-top:17%;
+}

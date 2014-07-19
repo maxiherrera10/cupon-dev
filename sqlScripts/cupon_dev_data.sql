@@ -1,11 +1,14 @@
 use cupon_dev;
 
-insert into profession (name) VALUES("Otra");
-insert into profession (name) VALUES("Profesor");
-insert into profession (name) VALUES("Vendedor");
-insert into profession (name) VALUES("Policia");
-insert into profession (name) VALUES("Estudiante");
-insert into profession (name) VALUES("Empleado");
+insert into profession (name) VALUES("Otro");
+insert into profession (name) VALUES("Ama de casa");
+insert into profession (name) VALUES("Comerciante");
+insert into profession (name) VALUES("Docente");
+insert into profession (name) VALUES("Empleado/a público");
+insert into profession (name) VALUES("Empleado/a privado");
+insert into profession (name) VALUES("Enfermero/a");
+insert into profession (name) VALUES("Doctor/a");
+insert into profession (name) VALUES("Profesional");
 
 insert into mobile_company (name) VALUES("Personal");
 insert into mobile_company (name) VALUES("Movistar");

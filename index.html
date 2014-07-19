@@ -1,115 +1,132 @@
-<html lang="en">
+<html lang="es_AR">
 	<head>
 		<title>Cupon Dev</title>
 		<!-- LOAD BOOTSTRAP CSS -->
-		<link rel="stylesheet" type="text/css" href="//localhost/css/vendor/bootstrap/3.1.1/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/vendor/bootstrap/3.1.1/bootstrap.min.css">
 		<!-- LOAD BOOTSTRAP VALIDATOR CSS -->
-		<link rel="stylesheet" type="text/css" href="//localhost/css/vendor/bootstrapValidator/0.4.5/bootstrapValidator.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/vendor/bootstrapValidator/0.4.5/bootstrapValidator.min.css">
+		<!-- LOAD CUPON CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/cupon.css">
 	</head>
 	<body ng-app="cuponapp" ng-controller="formController">
-		<div class="container">
-			<!-- PAGE TITLE -->
-			<div class="centered">
-				<h1>Cupon Apps para Lucas</h1>
-			</div>
-
+		<div id="maindiv" class="container">
 			<!-- FORM -->
 			<form id="cuponForm" name="cuponForm" class="form-horizontal" ng-submit="processForm(cuponForm.$valid)" novalidate>
 				<!-- SHOW ERROR/SUCCESS MESSAGES -->
-				<div class="form-group">
-					<div class="col-md-4"></div>
-					<div id="messages" class="well col-md-4" ng-show="message">Su voucher es: {{ message }}</div>
-				</div>
+				<div id="messages" ng-show="message">Su voucher es: {{ message }}</div>
 
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Nombre</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control col-md-4" name="name" ng-model='user.name' placeholder="Juan" required>
+						<input type="text" class="form-control" name="name" ng-model='user.name' placeholder="Juan" required>
 					</div>	
 				</div>
 				<div class="form-group">
 					<label for="surname" class="col-md-3 control-label">Apellido</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="surname" ng-model='user.surname' placeholder="Perez">
+						<input type="text" class="form-control " name="surname" ng-model='user.surname' placeholder="Perez">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-md-3 control-label">Email</label>
 					<div class="col-md-4">
-						<input type="email" class="form-control" name="email" ng-model='user.email' placeholder="Juan.Perez@gmail.com">
+						<input type="email" class="form-control " name="email" ng-model='user.email' placeholder="Juan.Perez@gmail.com">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="birthday" class="col-md-3 control-label">Cumpleanios</label>
+					<label for="birthday" class="col-md-3 control-label">Fecha de Nacimiento</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="birthday" ng-model='user.birthday' placeholder="01/01/1980">
+						<input type="text" class="form-control " name="birthday" ng-model='user.birthday' placeholder="01/01/1980">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-md-3 control-label">Direccion</label>
+					<label for="address" class="col-md-3 control-label">Domicilio</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="address" ng-model='user.address' placeholder="Calle 123">
+						<input type="text" class="form-control " name="address" ng-model='user.address' placeholder="Lacroze 54. Bº Uno. Plottier">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="city" class="col-md-3 control-label">Ciudad</label>
+					<label for="city" class="col-md-3 control-label">Provincia</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="city" ng-model='user.city' placeholder="Buenos Aires">
+						<input type="text" class="form-control " name="city" ng-model='user.city' placeholder="Neuquen">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="country" class="col-md-3 control-label">Pais</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="country" ng-model='user.country' placeholder="Argentina">
+						<input type="text" class="form-control " name="country" ng-model='user.country' placeholder="Argentina">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="phone" class="col-md-3 control-label">Telefono</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="phone" ng-model='user.phone' placeholder="01142940011">
+						<input type="text" class="form-control " name="phone" ng-model='user.phone' placeholder="01142940011">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="mobile" class="col-md-3 control-label">Celular</label>
+					<label for="mobile" class="col-md-3 control-label">Teléfono Cel.</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="mobile" ng-model='user.mobile' placeholder="1542940011">
+						<input type="text" class="form-control " name="mobile" ng-model='user.mobile' placeholder="1542940011">
 					</div>
 				</div>
 				<div class="form-group" ng-controller="mobileCompaniesController">
-					<label for="mobileCompany" class="col-md-3 control-label">Compania</label>
+					<label for="mobileCompany" class="col-md-3 control-label">Compañía</label>
 					<div class="col-md-4">
-						<select type="text" class="form-control" name="mobileCompany" ng-model='user.mobileCompany'
+						<select type="text" class="form-control " name="mobileCompany" ng-model='user.mobileCompany'
 							ng-options="mobileCompany.value as mobileCompany.text for mobileCompany in mobileCompanies">
 							<option value="">- - Selecciona una... - -</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group" ng-controller="professionController">
-					<label for="profession" class="col-md-3 control-label">Profesion</label>
+					<label for="profession" class="col-md-3 control-label">Ocupacion</label>
 					<div class="col-md-4">
-						<select class="form-control" name="profession" ng-model='user.profession'
+						<select class="form-control " name="profession" ng-model='user.profession'
 							ng-options="profession.value as profession.text for profession in professions">
 							<!-- You can have ONE default, null selection option. -->
 							<option value="">- - Selecciona una... - -</option>
 						</select>
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label for="profession" class="col-md-3 control-label">¿Hijos en edad escolar?</label>
+					<div class="col-md-4">
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model='user.sons' value="1" checked> Si
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model='user.sons' value="0"> No
+					</label>
+					</div>
+				</div>
+
+
 				<div class="form-group">
 					<div class="col-md-offset-3 col-md-8">
-						<button class="btn btn-primary">Sign in</button>
+						<button class="btn btn-primary">Solicitar Número</button>
 					</div>
 				</div>
 			</form>
+			<div>
+				<div>
+					<span>Ver bases de participacion</span>
+				</div>
+			</div>
 		</div>
 		<!-- LOAD ANGULAR -->
-		<script type="text/javascript" src="//localhost/js/vendor/angular/1.2.17/angular.min.js"></script>
+		<script type="text/javascript" src="/js/vendor/angular/1.2.17/angular.min.js"></script>
 		<!-- LOAD JQUERY -->
-		<script type="text/javascript" src="//localhost/js/vendor/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/js/vendor/jquery-2.1.1.min.js"></script>
 		<!-- LOAD Bootstrap Validator -->
-		<script type="text/javascript" src="//localhost/js/vendor/bootstrapValidator.min.js"></script>
+		<script type="text/javascript" src="/js/vendor/bootstrapValidator.min.js"></script>
+		<!-- LOAD moment -->
+		<script type="text/javascript" src="/js/vendor/moment.min.js"></script>
 		<!-- LOAD MY JS -->
-		<script type="text/javascript" src="//localhost/js/app.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
 		<!-- LOAD MY VALIDATOR -->
-		<script type="text/javascript" src="//localhost/js/validator.js"></script>
+		<script type="text/javascript" src="/js/validator.js"></script>
+		<!-- LOAD FOR FACEBOOK -->
+		<script type="text/javascript" src="/js/facebook.js"></script>
 	</body>
 </html>
