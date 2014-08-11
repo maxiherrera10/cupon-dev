@@ -8,12 +8,12 @@ class Api {
 	public function __construct() {
 		$this->actions = array(
 			'GET' => array(
-				'users' => new FindAllUsersAction(),
+				'customers' => new FindAllCustomersAction(),
 				'professions' => new FindAllProfessionsAction(),
 				'mobileCompanies' => new FindAllMobileCompaniesAction()
 			),
 			'POST' => array(
-				'users' => new CreateUserAction()
+				'customers' => new CreateCustomerAction()
 			)
 		);
 	}

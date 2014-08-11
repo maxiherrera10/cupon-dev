@@ -1,51 +1,57 @@
 <?php
-require 'UserRepository.class.php';
+require 'CustomerRepository.class.php';
 require 'ProfessionRepository.class.php';
 require 'MobileCompanyRepository.class.php';
-require 'User.class.php';
+require 'Customer.class.php';
 
 interface Action {
 	public function execute();
 };
 
-class FindAllUsersAction implements Action {
+class FindAllCustomersAction implements Action {
 
-	private $userRepository;
+	private $customerRepository;
 
 	public function __construct() {
-		$this->userRepository = new UserRepository();
+		$this->customerRepository = new CustomerRepository();
 	}
 
 	public function execute() {
-		return $this->userRepository->findAll();
+		return $this->customerRepository->findAll();
 	}
 };
 
-class CreateUserAction implements Action {
+class CreateCustomerAction implements Action {
 
-	private $userRepository;
+	private $customerRepository;
+	private $professionRepository;
+	private $mobileCompanyRepository;
 
 	public function __construct() {
-		$this->userRepository = new UserRepository();
+		$this->customerRepository = new CustomerRepository();
+		$this->mobileCompanyRepository = new MobileCompanyRepository();
+		$this->professionRepository = new ProfessionRepository();
 	}
 
 	public function execute() {
 		$email = $_POST["email"];
-		$voucher = $this->userRepository->findByEmail($email);
-		//create a new user
-		if (is_null($voucher)){
+		$customer = $this->customerRepository->findByEmail($email);
+		//create a new customer
+		if (is_null($customer)) {
 			$voucher = rand(00000, 99999);
-			$user = new User($_POST["name"], $_POST["surname"],
+			$customer = new Customer($_POST["name"], $_POST["surname"],
 			$email, $_POST["birthday"], $_POST["address"],
 			$_POST["city"], $_POST["country"], $_POST["phone"],
 			$_POST["mobile"], $_POST["mobileCompany"],
 			$_POST["profession"], $_POST["createDate"],
 			$voucher, $_POST["sons"]);
-			$this->userRepository->create($user);
-			$mailer = new Mailer();
-			$mailer->send($user);
+			$this->customerRepository->create($customer);
 		}
-		return $voucher;
+		$customer->profession = $this->professionRepository->findById($customer->profession);
+		$customer->mobileCompany = $this->mobileCompanyRepository->findById($customer->mobileCompany);
+		$mailer = new Mailer();
+		$mailer->send($customer);
+		return $customer->voucher;
 	}
 };
 

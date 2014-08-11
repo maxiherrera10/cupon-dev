@@ -9,3 +9,7 @@ $(document).ready(function() {
     $('#loginbutton,#feedbutton').removeAttr('disabled');
   }); 
 });
+
+window.fbAsyncInit = function() {
+    FB.Canvas.setAutoGrow();
+};

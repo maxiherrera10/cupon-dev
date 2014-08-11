@@ -14,7 +14,7 @@ create table cupon_dev.profession (
 	primary key (id)
 ) engine=InnoDB;
 
-create table cupon_dev.user (
+create table cupon_dev.customer (
 	name varchar(30) not null,
 	surname varchar(30) not null,
 	email varchar(30) not null,
@@ -28,6 +28,7 @@ create table cupon_dev.user (
 	profession_id int not null,
 	create_date datetime not null,
 	voucher mediumint unsigned not null,
+	sons tinyint(1) not null,
 	primary key (email),
 	foreign key (mobile_company_id) references mobile_company(id),
 	foreign key (profession_id) references profession(id),
